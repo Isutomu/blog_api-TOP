@@ -4,9 +4,8 @@
   justify-content: space-between;
   align-items: center;
 
-  max-width: 60rem;
   margin: 1rem auto 0;
-  padding: 0 2.5rem;
+  padding: 0 var(--padding-lateral-base);
 
   color: var(--accent);
 }
@@ -45,6 +44,6 @@
 
 @media screen and (max-width: 700px) {
   .header {
-    padding: 0 1rem;
+    padding: 0 var(--padding-lateral-sm);
   }
 }

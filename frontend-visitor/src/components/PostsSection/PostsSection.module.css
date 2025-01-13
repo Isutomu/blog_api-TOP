@@ -1,0 +1,10 @@
+.postsWrapper {
+  display: block;
+  margin-top: 1.5rem;
+
+  max-width: 90vw;
+}
+
+.postFeed {
+  max-width: 80vw;
+}

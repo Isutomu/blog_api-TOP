@@ -2,6 +2,7 @@
   --accent: #800080;
   --secondary: #e3dee8;
   --background: #fffffe;
+  --post-preview-text: #666666;
   --color: #292029;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -13,6 +14,8 @@
   --text-4xl: 2.25rem;
   --text-5xl: 3rem;
   --text-6xl: 5rem;
+  --padding-lateral-sm: 1rem;
+  --padding-lateral-base: 2.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,6 +32,11 @@ body {
     Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
   font-variant-ligatures: no-common-ligatures;
   color: var(--color);
+
+  max-width: 60rem;
+
+  margin-right: auto;
+  margin-left: auto;
 
   background-color: var(--background);
 }
