@@ -1,0 +1,47 @@
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.heroText {
+  margin-right: 1.5rem;
+}
+
+.heroTitle {
+  font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+  font-weight: 700;
+  font-size: var(--text-5xl);
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.heroParagraph {
+  font-size: var(--text-lg);
+
+  margin-top: 2rem;
+}
+
+.heroImage {
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .heroImage {
+    min-width: 100%;
+    max-height: 301px;
+  }
+}
