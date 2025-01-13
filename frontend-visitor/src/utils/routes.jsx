@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainPage from "../pages/Main/Main";
+import HomePage from "../pages/HomePage/HomePage";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <MainPage />,
+    element: <HomePage />,
     errorElement: <PageNotFound />,
   },
 ]);
