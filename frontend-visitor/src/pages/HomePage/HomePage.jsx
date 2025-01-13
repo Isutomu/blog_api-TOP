@@ -1,6 +1,7 @@
 import Header from "../../components/Header/Header";
 import Hero from "../../components/Hero/Hero";
 import PostsSection from "../../components/PostsSection/PostsSection";
+import Footer from "../../components/Footer/Footer";
 import styles from "./HomePage.module.css";
 
 function HomePage() {
@@ -12,6 +13,7 @@ function HomePage() {
         <h2 className={styles.recentTitle}>Recent posts</h2>
         <PostsSection />
       </main>
+      <Footer />
     </>
   );
 }

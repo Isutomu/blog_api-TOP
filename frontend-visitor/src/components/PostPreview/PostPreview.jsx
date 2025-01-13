@@ -14,7 +14,7 @@ function generateFooterText(post) {
     day: "2-digit",
   }).format(new Date(post.updatedAt));
 
-  const tags = post.tags.join("  ");
+  const tags = post.tags.join("<br>");
 
   const didUpdate = createdAt !== updatedAt;
   return `${createdAt}   •   ${tags}${
@@ -47,17 +47,17 @@ function PostPreview({ post }) {
   );
 }
 
-// PostPreview.propTypes = {
-//   post: PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//     img: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired,
-//     content: PropTypes.string.isRequired,
-//     contentPreview: PropTypes.string.isRequired,
-//     createdAt: PropTypes.string.isRequired,
-//     updatedAt: PropTypes.string.isRequired,
-//     tags: PropTypes.array.isRequired,
-//   }),
-// };
+PostPreview.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    contentPreview: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
+    tags: PropTypes.array.isRequired,
+  }),
+};
 
 export default PostPreview;
