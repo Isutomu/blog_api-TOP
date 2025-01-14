@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import styles from "./PostPreview.module.css";
+import styles from "./PostCard.module.css";
 import datetimeShort from "../../utils/dataFormatters/datetimeShort";
 import TagsAssembler from "../TagsAssembler/TagsAssembler";
 
@@ -8,7 +8,7 @@ function BulletPoint() {
   return <span className={styles.bulletPoint}>•</span>;
 }
 
-function PostPreview({ post }) {
+function PostCard({ post }) {
   return (
     <article className={styles.postArticle}>
       <Link className={styles.postImageLink} to={`/posts/${post.id}`}>
@@ -43,7 +43,7 @@ function PostPreview({ post }) {
   );
 }
 
-PostPreview.propTypes = {
+PostCard.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
@@ -56,4 +56,4 @@ PostPreview.propTypes = {
   }),
 };
 
-export default PostPreview;
+export default PostCard;

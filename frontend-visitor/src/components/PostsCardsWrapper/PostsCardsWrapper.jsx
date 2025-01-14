@@ -1,8 +1,8 @@
 import usePostData from "../../utils/customHooks/usePostData";
-import PostPreview from "../PostPreview/PostPreview";
-import styles from "./PostsSection.module.css";
+import PostCard from "../PostCard/PostCard";
+import styles from "./PostsCardsWrapper.module.css";
 
-function PostsSection() {
+function PostsCardsWrapper() {
   // This URL returns an array of posts previews
   const { data, error, loading } = usePostData(
     import.meta.env.VITE_API_URL_POSTS
@@ -22,11 +22,11 @@ function PostsSection() {
     <section className={styles.postsWrapper}>
       <div className={styles.postFeed}>
         {data.map((post) => (
-          <PostPreview key={post.id} post={post} />
+          <PostCard key={post.id} post={post} />
         ))}
       </div>
     </section>
   );
 }
 
-export default PostsSection;
+export default PostsCardsWrapper;
