@@ -1,9 +1,10 @@
-import usePosts from "../../utils/customHooks/usePosts";
+import usePostData from "../../utils/customHooks/usePostData";
 import PostPreview from "../PostPreview/PostPreview";
 import styles from "./PostsSection.module.css";
 
 function PostsSection() {
-  const { posts, error, loading } = usePosts(
+  // This URL returns an array of posts previews
+  const { data, error, loading } = usePostData(
     import.meta.env.VITE_API_URL_POSTS
   );
 
@@ -13,14 +14,14 @@ function PostsSection() {
   if (loading) {
     return <span>loading</span>;
   }
-  if (!posts) {
+  if (!data) {
     return <span>no posts</span>;
   }
 
   return (
     <section className={styles.postsWrapper}>
       <div className={styles.postFeed}>
-        {posts.map((post) => (
+        {data.map((post) => (
           <PostPreview key={post.id} post={post} />
         ))}
       </div>
