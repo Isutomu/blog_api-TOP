@@ -1,0 +1,81 @@
+.main {
+  padding: 0 var(--padding-lateral-base) 4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: var(--color);
+}
+
+.tags {
+  display: inline;
+  margin-left: 0.5rem;
+
+  font-size: (--text-sm);
+}
+
+.tags a {
+  opacity: 0.8;
+  color: var(--color);
+
+  transition: all 0.2s linear;
+}
+
+.tags a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.share:hover {
+  cursor: pointer;
+}
+
+.image {
+  margin: 1rem auto 0 auto;
+  height: clamp(8rem, 60vh, 40rem);
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.title {
+  margin: 2rem 5%;
+
+  font-size: var(--text-6xl);
+  font-weight: 700;
+  text-align: center;
+  line-height: 125%;
+  font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
+  color: var(--accent);
+}
+
+.textContent {
+  padding-top: 1rem;
+
+  font-size: var(--text-lg);
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    padding-inline: var(--padding-lateral-sm);
+  }
+
+  .image {
+    height: clamp(8rem, 40vh, 40rem);
+  }
+
+  .title {
+    margin: 1rem;
+    font-size: var(--text-4xl);
+  }
+
+  .textContent {
+    font-size: var(--text-base);
+  }
+}
