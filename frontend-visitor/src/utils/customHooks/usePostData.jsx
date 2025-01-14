@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-function usePosts(apiUrl) {
-  const [posts, setPosts] = useState(null);
+function usePostData(apiUrl) {
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +16,7 @@ function usePosts(apiUrl) {
         return response.json();
       })
       .then((data) => {
-        setPosts(data["data"]);
+        setData(data["data"]);
       })
       .catch((error) => {
         console.log("error");
@@ -25,13 +25,13 @@ function usePosts(apiUrl) {
       .finally(() => setLoading(false));
 
     return () => {
-      setPosts(null);
+      setData(null);
       setError(null);
       setLoading(true);
     };
   }, [apiUrl]);
 
-  return { posts, error, loading };
+  return { data, error, loading };
 }
 
-export default usePosts;
+export default usePostData;
