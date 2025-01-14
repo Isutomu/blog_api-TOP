@@ -2,27 +2,19 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styles from "./PostPreview.module.css";
 import datetimeShort from "../../utils/dataFormatters/datetimeShort";
+import TagsAssembler from "../TagsAssembler/TagsAssembler";
 
-function generateFooterText(post) {
-  const createdAt = datetimeShort(post.createdAt);
-  const updatedAt = datetimeShort(post.updatedAt);
-
-  const tags = post.tags.join(" ");
-
-  const didUpdate = createdAt !== updatedAt;
-  return `${createdAt}   •   ${tags}${
-    didUpdate ? `   •   last update ${updatedAt}` : ""
-  }`;
+function BulletPoint() {
+  return <span className={styles.bulletPoint}>•</span>;
 }
 
 function PostPreview({ post }) {
-  const footer = generateFooterText(post);
-
   return (
     <article className={styles.postArticle}>
       <Link className={styles.postImageLink} to={`/posts/${post.id}`}>
         <img className={styles.postImage} src={post.image} alt="" />
       </Link>
+
       <div className={styles.postPreviewContent}>
         <Link to={`/posts/${post.id}`}>
           <header>
@@ -30,11 +22,22 @@ function PostPreview({ post }) {
           </header>{" "}
           <p className={styles.postPreviewText}>{post.contentPreview}</p>
         </Link>
-        {footer ? (
-          <footer className={styles.postPreviewFooter}>
-            <span>{footer}</span>
-          </footer>
-        ) : null}
+
+        <footer className={styles.postPreviewFooter}>
+          <time dateTime={styles.createdAt}>
+            {datetimeShort(post.createdAt)}
+          </time>
+          <BulletPoint />
+          <TagsAssembler tags={post.tags} />
+          {styles.updatedAt ? (
+            <>
+              <BulletPoint />
+              <time dateTime={styles.updatedAt}>
+                {datetimeShort(post.updatedAt)}
+              </time>
+            </>
+          ) : null}
+        </footer>
       </div>
     </article>
   );
