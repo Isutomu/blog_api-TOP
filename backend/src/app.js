@@ -3,13 +3,9 @@ const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const routes = require("./routes");
+const corsOptions = require("./config/corsOptions");
 
 const app = express();
-
-const corsOptions = {
-  origin: process.env.CORS_ORIGIN,
-  optionsSuccessStatus: 200,
-};
 
 app.use(helmet());
 app.use(cors(corsOptions));
