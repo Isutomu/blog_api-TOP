@@ -1,18 +1,16 @@
-import { FaRegShareSquare } from "react-icons/fa";
 import PropTypes from "prop-types";
-import { RWebShare } from "react-web-share";
 import usePostData from "../../utils/customHooks/usePostData";
 import datetimeShort from "../../utils/dataFormatters/datetimeShort";
 import TagsAssembler from "../TagsAssembler/TagsAssembler";
 import styles from "./PostFullView.module.css";
-import { useLocation } from "react-router-dom";
+import SafeHTML from "../SafeHTML/SafeHTML";
+import ShareButton from "../ShareButton/ShareButton";
 
 function PostFull({ postId }) {
   // This URL returns an object with the post information
   const { data, error, loading } = usePostData(
     `${import.meta.env.VITE_API_URL_POSTS}/${postId}`
   );
-  const location = useLocation();
 
   if (error) {
     return <span>{error.message}</span>;
@@ -37,23 +35,14 @@ function PostFull({ postId }) {
             <TagsAssembler tags={data.tags} />
           </div>
         </div>
-        <RWebShare
-          data={{
-            text: data.title,
-            url: location.pathname,
-            title: "Isutomu Naruto",
-          }}
-          onClick={() => console.log("shared successfully!")}
-        >
-          <button className={styles.share}>
-            <FaRegShareSquare size="1.25rem" />
-          </button>
-        </RWebShare>
+        <ShareButton postTitle={data.title} />
       </header>
       <article>
         <img className={styles.image} src={data.image} alt="" />
         <h1 className={styles.title}>{data.title}</h1>
-        <div className={styles.textContent}>{data.content}</div>
+        <div className={styles.textContent}>
+          <SafeHTML unsafeHTML={data.content} />
+        </div>
       </article>
     </main>
   );
@@ -62,17 +51,5 @@ function PostFull({ postId }) {
 PostFull.propTypes = {
   postId: PropTypes.string.isRequired,
 };
-
-// PostPreview.propTypes = {
-//   post: PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//     image: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired,
-//     content: PropTypes.string.isRequired,
-//     createdAt: PropTypes.string.isRequired,
-//     updatedAt: PropTypes.string.isRequired,
-//     tags: PropTypes.array.isRequired,
-//   }),
-// };
 
 export default PostFull;
