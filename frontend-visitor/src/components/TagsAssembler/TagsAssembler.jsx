@@ -6,8 +6,8 @@ function TagsAssembler({ tags }) {
   return (
     <div className={styles.tagsAssembler}>
       {tags.map((tag, index) => (
-        <Link className={styles.tag} key={index} to={`/tags/${tag}`}>
-          {tag}
+        <Link className={styles.tag} key={index} to={`/tags/${tag.name}`}>
+          {tag.name}
         </Link>
       ))}
     </div>
