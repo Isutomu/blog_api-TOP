@@ -8,3 +8,5 @@ routes.get("/posts", controllersGetPosts.allPosts);
 routes.get("/posts/:postId", controllersGetPosts.singlePost);
 
 routes.post("/posts", controllersPostPosts.singlePost);
+
+module.exports = routes;

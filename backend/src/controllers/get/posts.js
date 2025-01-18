@@ -36,6 +36,9 @@ module.exports.allPosts = asyncHandler(async (req, res) => {
 module.exports.singlePost = asyncHandler(async (req, res) => {
   const post = await prisma.post.findFirst({
     where: { id: req.params.postId },
+    include: {
+      tags: true,
+    },
   });
 
   return res.json({ data: post });
