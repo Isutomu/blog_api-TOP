@@ -16,10 +16,12 @@
   "dependencies": {
     "@prisma/client": "^6.2.1",
     "cors": "^2.8.5",
+    "dompurify": "^3.2.3",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-async-handler": "^1.2.0",
-    "helmet": "^8.0.0"
+    "helmet": "^8.0.0",
+    "jsdom": "^26.0.0"
   },
   "devDependencies": {
     "prettier": "^3.4.2",

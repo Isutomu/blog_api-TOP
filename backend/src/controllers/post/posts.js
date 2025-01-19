@@ -1,5 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const asyncHandler = require("express-async-handler");
+const { sanitizeHTML } = require("../../helpers/sanitizeHTML");
+const { sliceContent } = require("../../helpers/parseAndSliceContent");
 const { tagsToPrisma } = require("../../helpers/parsePostTagsForPrismaCreate");
 
 const prisma = new PrismaClient();
@@ -15,12 +17,14 @@ const prisma = new PrismaClient();
  */
 module.exports.singlePost = asyncHandler(async (req, res) => {
   const { image, title, content, userId, tags } = req.body;
+  const contentPreview = sliceContent(sanitizeHTML(content));
+
   const post = {
     image,
     title,
     content,
     userId,
-    contentPreview: content.slice(0, 60),
+    contentPreview,
   };
 
   const databasePost = await prisma.post.create({
