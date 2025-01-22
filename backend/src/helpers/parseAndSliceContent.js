@@ -1,3 +1,5 @@
+const { parseFromString } = require("dom-parser");
+
 /**
  * Removes HTML tags from a stringified HTML and slices the resulting string.
  *
@@ -8,8 +10,7 @@
  */
 
 module.exports.sliceContent = (sanitizedHTML, targetSize) => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(sanitizedHTML, "text/html");
+  const doc = parseFromString(sanitizedHTML, "text/html");
   const textContent = doc.body.textContent.trim();
 
   const acceptableExtraLength = targetSize * 0.1;
