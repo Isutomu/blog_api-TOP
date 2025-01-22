@@ -1,0 +1,16 @@
+.footer {
+  padding: 0 1rem 4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footerContent {
+  max-width: 60rem;
+  padding-top: 2rem;
+
+  border-top: 1px solid var(--secondary);
+
+  text-align: center;
+  font-size: var(--text-base);
+  color: var(--accent);
+}
