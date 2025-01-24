@@ -16,7 +16,8 @@ const prisma = new PrismaClient();
  * is the added 'post'.
  */
 module.exports.singlePost = asyncHandler(async (req, res) => {
-  const { image, title, content, userId, tags } = req.body;
+  const { image, title, content, tags } = req.body;
+  const userId = req.user.id;
   const contentPreview = sliceContent(sanitizeHTML(content));
 
   const post = {

@@ -1,4 +1,4 @@
-const { parseFromString } = require("dom-parser");
+const { JSDOM } = require("jsdom");
 
 /**
  * Removes HTML tags from a stringified HTML and slices the resulting string.
@@ -10,8 +10,10 @@ const { parseFromString } = require("dom-parser");
  */
 
 module.exports.sliceContent = (sanitizedHTML, targetSize) => {
-  const doc = parseFromString(sanitizedHTML, "text/html");
-  const textContent = doc.body.textContent.trim();
+  const doc = new JSDOM(`<body>${sanitizedHTML}</body>`).window;
+  const textContent = doc.document
+    .getElementsByTagName("body")[0]
+    .textContent.trim();
 
   const acceptableExtraLength = targetSize * 0.1;
   let slicedContent = textContent.slice(0, targetSize);

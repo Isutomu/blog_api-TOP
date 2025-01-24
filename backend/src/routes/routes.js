@@ -12,7 +12,6 @@ const routes = Router();
 routes.get("/posts", controllersGetPosts.allPosts);
 routes.get("/posts/:postId", controllersGetPosts.singlePost);
 
-routes.post("/posts", controllersPostPosts.singlePost);
 routes.post("/login", controllersPostLogIn.logIn);
 
 // dev only
@@ -27,6 +26,6 @@ routes.post("/signUp", createUser.addUser);
 require("../config/passport");
 routes.use(passport.authenticate("jwt", { session: false }));
 
-routes.get("/postsProtected", controllersGetPosts.allPosts);
+routes.post("/posts", controllersPostPosts.singlePost);
 
 module.exports = routes;
