@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./DashboardHome.module.css";
 
 const DashboardHome = () => {
@@ -6,8 +7,12 @@ const DashboardHome = () => {
       <h1 className={styles.h1}>Welcome!{}</h1>
       <p>Would you like to...</p>
       <div className={styles.buttonsContainer}>
-        <button className={styles.button}>Update a post</button>
-        <button className={styles.button}>Create a new post</button>
+        <Link to="/dashboard/createPost">
+          <button className={styles.button}>Create a new post</button>
+        </Link>
+        <Link to="/dashboard/updatePost">
+          <button className={styles.button}>Update a post</button>
+        </Link>
       </div>
     </main>
   );

@@ -3,6 +3,7 @@ import LogIn from "../components/LogIn/LogIn";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import DashboardHome from "../components/DashboardHome/DashboardHome";
+import CreatePost from "../components/CreatePost/CreatePost";
 
 const routes = new createBrowserRouter([
   { index: true, element: <LogIn /> },
@@ -15,10 +16,8 @@ const routes = new createBrowserRouter([
         element: <Dashboard />,
         children: [
           { index: true, element: <DashboardHome /> },
-          { path: "/dashboard/createPost", element: <DashboardHome /> },
-
-          // { path: "/createPost", element: <CreatePost /> },
-          // { path: "/editPost", element: <UpdatePost /> },
+          { path: "/dashboard/createPost", element: <CreatePost /> },
+          { path: "/dashboard/updatePost", element: <CreatePost /> },
         ],
       },
     ],

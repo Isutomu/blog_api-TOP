@@ -1,5 +1,5 @@
 const fetchLogIn = async (userInfo) => {
-  const response = await fetch("http://localhost:8010/proxy/logIn", {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/logIn`, {
     mode: "cors",
     method: "POST",
     body: JSON.stringify(userInfo),
