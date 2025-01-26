@@ -1,0 +1,11 @@
+.tagsAssembler {
+  display: inline;
+}
+
+.tag {
+  margin-left: 0.5rem;
+}
+
+.tag:first-child {
+  margin-left: 0;
+}

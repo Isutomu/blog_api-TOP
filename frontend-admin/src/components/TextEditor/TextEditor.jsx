@@ -1,11 +1,12 @@
 import { Editor } from "@tinymce/tinymce-react";
+import PropTypes from "prop-types";
 
-function TextEditor({ contentRef }) {
+function TextEditor({ contentRef, initialText }) {
   return (
     <Editor
       apiKey={import.meta.env.VITE_API_TINY_MCE}
       onInit={(_evt, editor) => (contentRef.current = editor)}
-      initialValue=""
+      initialValue={initialText}
       init={{
         height: 500,
         menubar: false,
@@ -40,5 +41,13 @@ function TextEditor({ contentRef }) {
     />
   );
 }
+
+TextEditor.propTypes = {
+  contentRef: PropTypes.shape({
+    current: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
+      .isRequired,
+  }),
+  initialText: PropTypes.string.isRequired,
+};
 
 export default TextEditor;

@@ -25,7 +25,7 @@ const CreatePost = () => {
       setError(response.error.message);
       return;
     }
-    console.log(response.data);
+
     navigate("/dashboard");
   };
 
