@@ -11,7 +11,7 @@ function Hero() {
       </div>
       <img
         className={styles.heroImage}
-        src="https://cdn.glitch.global/d45aff89-36ba-46db-8c7c-3da7c8a93931/headshot-2022-square.jpeg?v=1698766406592"
+        src="https://ae01.alicdn.com/kf/S8e3683907b9949beb418b9ae97302ce0e.jpg_640x640q90.jpg"
         alt=""
       />
     </header>
