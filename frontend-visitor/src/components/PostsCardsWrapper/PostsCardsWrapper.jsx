@@ -1,23 +1,8 @@
-import usePostData from "../../utils/customHooks/usePostData";
 import PostCard from "../PostCard/PostCard";
+import PropTypes from "prop-types";
 import styles from "./PostsCardsWrapper.module.css";
 
-function PostsCardsWrapper() {
-  // This URL returns an array of posts previews
-  const { data, error, loading } = usePostData(
-    import.meta.env.VITE_API_URL_POSTS
-  );
-
-  if (error) {
-    return <span>{error.message}</span>;
-  }
-  if (loading) {
-    return <span>loading</span>;
-  }
-  if (!data) {
-    return <span>no posts</span>;
-  }
-
+function PostsCardsWrapper({ data }) {
   return (
     <section className={styles.postsWrapper}>
       <div className={styles.postFeed}>
@@ -28,5 +13,9 @@ function PostsCardsWrapper() {
     </section>
   );
 }
+
+PostsCardsWrapper.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 export default PostsCardsWrapper;

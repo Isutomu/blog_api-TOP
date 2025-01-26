@@ -31,6 +31,7 @@ function usePostData(apiUrl) {
     };
   }, [apiUrl]);
 
+  console.log(data);
   return { data, error, loading };
 }
 

@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 var(--padding-lateral-base) 4rem;
+}
+
+.recentTitle {
+  font-size: var(--text-3xl);
+  font-weight: 600;
+
+  margin-top: 3.5rem;
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    padding-right: var(--padding-lateral-sm);
+    padding-left: var(--padding-lateral-sm);
+  }
+}

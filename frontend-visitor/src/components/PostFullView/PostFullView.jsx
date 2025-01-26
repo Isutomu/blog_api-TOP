@@ -9,7 +9,7 @@ import ShareButton from "../ShareButton/ShareButton";
 function PostFull({ postId }) {
   // This URL returns an object with the post information
   const { data, error, loading } = usePostData(
-    `${import.meta.env.VITE_API_URL_POSTS}/${postId}`
+    `${import.meta.env.VITE_API_URL}/posts/${postId}`
   );
 
   if (error) {

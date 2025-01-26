@@ -1,14 +1,15 @@
 import Header from "../../components/Header/Header";
-import Hero from "../../components/Hero/Hero";
 import PostsCardsWrapper from "../../components/PostsCardsWrapper/PostsCardsWrapper";
 import Footer from "../../components/Footer/Footer";
 import usePostData from "../../utils/customHooks/usePostData";
-import styles from "./HomePage.module.css";
+import styles from "./SearchResultPage.module.css";
+import { useParams } from "react-router-dom";
 
-function HomePage() {
+function SearchResultPage() {
+  const { tagName } = useParams();
   // This URL returns an array of posts previews
   const { data, error, loading } = usePostData(
-    `${import.meta.env.VITE_API_URL}/posts`
+    `${import.meta.env.VITE_API_URL}/tags/${tagName}`
   );
 
   let mainContent;
@@ -25,13 +26,14 @@ function HomePage() {
     dataAvailable = false;
     mainContent = <span>no posts</span>;
   }
-
+  console.log(data);
   return (
     <>
       <Header />
       <main className={styles.main}>
-        <Hero />
-        <h2 className={styles.recentTitle}>Recent posts</h2>
+        <h2 className={styles.recentTitle}>
+          Searching posts with tag: {tagName}
+        </h2>
         {dataAvailable ? <PostsCardsWrapper data={data} /> : mainContent}
       </main>
       <Footer />
@@ -39,4 +41,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default SearchResultPage;
