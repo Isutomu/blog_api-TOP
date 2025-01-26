@@ -43,3 +43,25 @@ module.exports.singlePost = asyncHandler(async (req, res) => {
 
   return res.json({ data: post });
 });
+
+/**
+ * Fetches all 'posts' that have the required tag.
+ *
+ * Returns all 'posts' with all the fields on the database,
+ * with the exception on 'content' (so only the short
+ * version 'contentPreview' is sent.) that have the required tag
+ * as one of its tags
+ *
+ * @return {Object} An object with the 'data' key whose value
+ * is an array with 'post' objects.
+ */
+module.exports.searchByTag = asyncHandler(async (req, res) => {
+  const posts = await prisma.tag.findFirst({
+    where: { name: req.params.tagName },
+    select: {
+      posts: { include: { tags: true } },
+    },
+  });
+
+  return res.json({ data: posts?.posts });
+});

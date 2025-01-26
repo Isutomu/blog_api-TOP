@@ -11,6 +11,7 @@ const routes = Router();
  */
 routes.get("/posts", controllersGetPosts.allPosts);
 routes.get("/posts/:postId", controllersGetPosts.singlePost);
+routes.get("/tags/:tagName", controllersGetPosts.searchByTag);
 
 routes.post("/login", controllersPostLogIn.logIn);
 
