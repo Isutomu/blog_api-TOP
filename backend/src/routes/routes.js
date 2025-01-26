@@ -28,4 +28,6 @@ routes.use(passport.authenticate("jwt", { session: false }));
 
 routes.post("/posts", controllersPostPosts.singlePost);
 
+routes.patch("/posts/:postId", controllersPostPosts.updatePost);
+
 module.exports = routes;
